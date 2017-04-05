@@ -1,3 +1,8 @@
 node_modules
+coverage
 build
+public
 .DS_Store
+dist
+public
+env.sh

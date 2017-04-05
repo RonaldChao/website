@@ -1,0 +1,16 @@
+
+.title {
+  color: red;
+}
+
+.selectTitleStyle {
+  padding: 10px;
+  margin-top: 0;
+  background: white;
+  padding: 0 40px;
+  height: 35px;
+  float: left;
+  display: inline-block;
+  height: 35px;
+  border-radius: 10px 0 0px 10px;
+}

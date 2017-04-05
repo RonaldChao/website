@@ -1,0 +1,13 @@
+
+.selectStyle {
+    height: 2.25em;
+    font-size: 15px;
+    color: #555555;
+    width: 30%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    text-align: center;
+    text-align-last: center;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+  }

@@ -1,27 +1,64 @@
-var path = require('path')
-var webpack = require('webpack')
+const { resolve, join } = require('path')
+const webpack = require('webpack')
 
-module.exports = {
-  devtool: 'cheap-module-eval-source-map',
-  entry: [
-    'webpack-hot-middleware/client',
-    './index'
-  ],
+const config = {
+  devtool: 'cheap-eval-source-map',
+  entry: {
+    home: [
+      'webpack-hot-middleware/client',
+      './src/clientRender.js'
+    ]
+  },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: resolve(__dirname,'public/'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-  ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      exclude: /node_modules/,
-      include: __dirname
-    }]
-  }
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          'babel-loader'
+        ],
+        exclude: '/node_modules/'
+      },
+      {
+        test: /node_modules\/.+\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: false,
+              importLoaders: 1
+            }
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NamedModulesPlugin()
+  ]
 }
+module.exports = config
