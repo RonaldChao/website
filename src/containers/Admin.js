@@ -1,11 +1,13 @@
 import { connect } from 'react-redux'
-import Admin from './../pages/Admin'
+import api from '../actions/api'
+
 // import helloActionCreator from '../actions/hello'
+import Admin from './../pages/Admin'
 import globalStyle from '../styles/global.css'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    // message: state.hello.message
+    cinList: state.cin.list
   }
 }
 
@@ -24,8 +26,10 @@ const AdminContainer = connect(
 
 AdminContainer.initState = (store, req, res) => {
   return (dispatch, getState) => {
-    return new Promise((resolve, reject) => {
-      resolve()
+    return Promise.all([api.getCinList()]).then((result) => {
+      const list = result[0]
+      dispatch({type: 'SET_CIN_LIST', list})
+      return Promise.resolve()
     })
   }
 }

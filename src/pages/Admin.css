@@ -1,0 +1,18 @@
+.tableStyle{
+
+}
+
+.rowStyle{
+    display: -webkit-flex;
+    display: flex;
+    background-color: lightgrey;
+}
+
+.cellStyle{
+    margin: 10px;
+    width: 30%;
+}
+
+.geoStyle{
+    text-align: center;
+}

@@ -32,7 +32,7 @@ app.use(require('express').static('public'))
 
 let serverRender = require('./serverRender')
 
-app.use('/', cin)
+app.use('/api/cin', cin)
 app.get('*', serverRender)
 
 app.listen(port, function(error) {

@@ -15,40 +15,40 @@ class Hello extends React.Component {
     this.updateStateCin = this.updateStateCin.bind(this);
   }
 
-  updateStateCin(selectedOption){
+  updateStateCin(selectedOption) {
     console.log(`Selected: ${selectedOption.label}`);
-    this.setState({ selectedOption:  selectedOption.label});
+    this.setState({ selectedOption: selectedOption.label});
   }
 
   render () {
     const {message, onClick} = this.props
     const {updateStateCin} = this
     const options = [
-      {value : 'a', label: 'alabel'},
-      {value : 'b', label: 'blabel'},
-      {value : 'c', label: 'clabel'},
+      {value: 'a', label: 'alabel'},
+      {value: 'b', label: 'blabel'},
+      {value: 'c', label: 'clabel'},
     ]
 
     const selectTitle = classNames(style['selectTitleStyle'])
-    
-    return (<div>
-            <h1 className={classNames(style['title'])}>{ message }</h1>
-            <button onClick={onClick}>Click</button>
 
-            <form>
-              <div>
-                <div className={selectTitle}> 
-                  <p>Name( {this.state.selectedOption}): </p>
-                </div>
-                <Selector
-                  name="form-field-name"
-                  value={this.state.cin}
-                  options={options} 
-                  onChange={updateStateCin}
-                />
-              </div>
-            </form>
-          </div>)
+    return (<div>
+      <h1 className={classNames(style['title'])}>{ message }</h1>
+      <button onClick={onClick}>Click</button>
+
+      <form>
+        <div>
+          <div className={selectTitle}>
+            <p>Name( {this.state.selectedOption}): </p>
+          </div>
+          <Selector
+            name="form-field-name"
+            value={this.state.cin}
+            options={options}
+            onChange={updateStateCin}
+          />
+        </div>
+      </form>
+    </div>)
   }
 }
 

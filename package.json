@@ -65,7 +65,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint:fix": "eslint --fix .js src",
-    "lint": "eslint --ext .js src"
+    "lint": "eslint --ext .js src",
+    "heroku-postbuild": "NODE_ENV=production babel src --out-dir dist --copy-files && webpack -p --progress --config webpack.prod.config.js",
   },
   "eslintConfig": {
     "env": {

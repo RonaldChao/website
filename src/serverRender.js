@@ -72,15 +72,10 @@ function renderFullPage(html, preloadedState) {
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Redux Hello World</title>
+        <title>Cool Banana</title>
         <link rel="stylesheet" type="text/css" href=${bundleCSS}>
-        <script src="https://unpkg.com/react@15.6.1/dist/react.js"></script>
-        <script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.js"></script>
-        <script src="https://unpkg.com/prop-types@15.5.10/prop-types.js"></script>
-        <script src="https://unpkg.com/classnames@2.2.5/index.js"></script>
-        <script src="https://unpkg.com/react-input-autosize@2.0.0/dist/react-input-autosize.js"></script>
-        <script src="https://unpkg.com/react-select/dist/react-select.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
       </head>
       <body>
         <div id="root">${`<div>${html}</div>`}</div>

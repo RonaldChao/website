@@ -8,7 +8,7 @@ router.use(bodyParser.json())
 
 router.get('/', (req, res) => {  
     const field = {}
-    cinModel.getList({}, field).then(
+    cinModel.getList({limit: 1000}, field).then(
       (cinList) => {
           res.json(cinList)
       }
