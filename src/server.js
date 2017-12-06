@@ -4,7 +4,7 @@ require('babel-register');
 import cin from './routers/cin'
 
 const app = new (require('express'))()
-const port = 3000
+var port = process.env.PORT || defaultPort;
 
 require('css-modules-require-hook')({
   generateScopedName: '[name]__[local]___[hash:base64:5]'
