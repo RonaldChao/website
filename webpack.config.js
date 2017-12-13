@@ -10,7 +10,7 @@ const config = {
     ]
   },
   output: {
-    path: resolve(__dirname,'public/'),
+    path: resolve(__dirname, 'public/'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
@@ -18,9 +18,7 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        use: [
-          'babel-loader'
-        ],
+        use: ['babel-loader'],
         exclude: '/node_modules/'
       },
       {

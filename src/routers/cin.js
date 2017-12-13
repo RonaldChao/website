@@ -19,14 +19,14 @@ router.get('/:id', (req, res) => {
         .then((cinList) => res.json(cinList[0]))
 })
 
-router.put('/:id', (req, res) => {  
+router.put('/:id', (req, res) => {      
     const cinId = req.params.id
     const condition = {id: cinId}
     const payload = (req.body)
 
     cinModel.updateByCondidtion(condition, payload)
         .then(
-            result => res.responseOK(),
+            () => res.responseOK(),
             err => res.json('')
         )
   })

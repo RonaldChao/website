@@ -29,18 +29,18 @@ if (process.env.NODE_ENV === 'development') {
   app.use(hotDevMiddleware(compiler))
 }
 
-app.use(require('express').static('public'))
-
-app.use('/api/cin', cin)
-
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
   // init res
   res.responseOK = (msg = 'OK') => {
-    res.sendStatus(200).json({msg})
+    res.json({msg})
   }
 
   next()
 })
+
+app.use(require('express').static('public'))
+
+app.use('/api/cin', cin)
 
 app.get('*', require('./serverRender'))
 

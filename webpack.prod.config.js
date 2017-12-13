@@ -5,9 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const config = {
   entry: {
-    bundle: [
-      './src/clientRender.js'
-    ],
+    bundle: ['./src/clientRender.js'],
     'vendor/js': [
       'react',
       'react-dom',
@@ -25,17 +23,17 @@ const config = {
       {
         test: /\.js[x]?$/,
         enforce: 'pre',
-        use: [{
-          loader: 'eslint-loader', 
-          options: { fix: true }
-        }],
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: { fix: true }
+          }
+        ],
         exclude: '/node_modules/'
       },
       {
         test: /\.js$/,
-        use: [
-          'babel-loader'
-        ],
+        use: ['babel-loader'],
         exclude: '/node_modules/'
       },
       {
@@ -62,8 +60,8 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module) {
-         // this assumes your vendor imports exist in the node_modules directory
-         return module.context && module.context.indexOf('node_modules') !== -1
+        // this assumes your vendor imports exist in the node_modules directory
+        return module.context && module.context.indexOf('node_modules') !== -1
       }
     }),
     new ExtractTextPlugin({
