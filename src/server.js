@@ -2,6 +2,8 @@
 require('babel-register');
 
 import cin from './routers/cin'
+import helmet from 'helmet'
+import cors from 'cors'
 
 const app = new (require('express'))()
 const defaultPort = 3000
@@ -28,6 +30,9 @@ if (process.env.NODE_ENV === 'development') {
   app.use(devMiddleware(compiler, devMiddlewareConfig))
   app.use(hotDevMiddleware(compiler))
 }
+
+app.use('*', cors())
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
 app.use((req, res, next) => {
   // init res

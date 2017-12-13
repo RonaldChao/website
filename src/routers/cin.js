@@ -4,7 +4,36 @@ import cinModel from './database/cin'
 var bodyParser = require('body-parser')
 const router = express.Router()
 
+
+// import cors from 'cors'
+// var corsOptions = {
+//     origin: function (origin, callback) {
+
+//         console.log('origin: ', origin)
+//         callback(null, true)
+//     //   if (whitelist.indexOf(origin) !== -1) {
+//     //     callback(null, true)
+//     //   } else {
+//     //     callback(new Error('Not allowed by CORS'))
+//     //   }
+//     }
+//   }
+
+// router.use(cors(corsOptions))
+
+
 router.use(bodyParser.json())
+
+router.use((req, res, next)=>{
+    const refer = req.headers.referrer || req.headers.referer
+    var contype = req.headers['content-type'];
+
+
+    console.log("refer: ", refer)
+    console.log("req.headers: ", req.headers)
+
+    next()
+})
 
 router.get('/', (req, res) => {  
     const field = {}
