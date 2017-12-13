@@ -4,7 +4,8 @@ require('babel-register');
 import cin from './routers/cin'
 
 const app = new (require('express'))()
-var port = process.env.PORT || defaultPort;
+const defaultPort = 3000
+const port = process.env.PORT || defaultPort;
 
 require('css-modules-require-hook')({
   generateScopedName: '[name]__[local]___[hash:base64:5]'
@@ -30,10 +31,18 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(require('express').static('public'))
 
-let serverRender = require('./serverRender')
-
 app.use('/api/cin', cin)
-app.get('*', serverRender)
+
+app.use((req, res, next)=>{
+  // init res
+  res.responseOK = (msg = 'OK') => {
+    res.sendStatus(200).json({msg})
+  }
+
+  next()
+})
+
+app.get('*', require('./serverRender'))
 
 app.listen(port, function(error) {
   if (error) {
