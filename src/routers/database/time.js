@@ -4,7 +4,7 @@ const Abstract = require('./abstract')
 //* _*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
 // Schema Definition
 //* _*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
-var timeObject = new Schema({
+let timeObject = new Schema({
   cinId: { type: String, required: true },
   movieId: { type: String, required: true },
   time: { type: Number, required: true },
@@ -14,10 +14,10 @@ var timeObject = new Schema({
 })
 
 timeObject.pre('save', function (next) {
-    this.updatedAt = Date.now();
-    next()
+  this.updatedAt = Date.now();
+  next()
 })
 
-const timeModel = new Abstract('Time' , timeObject)
+const timeModel = new Abstract('Time', timeObject)
 
 module.exports = timeModel

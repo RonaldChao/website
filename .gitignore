@@ -1,8 +1,7 @@
 node_modules
 coverage
 build
-public
+public/static/*
 .DS_Store
 dist
-public
 env.sh

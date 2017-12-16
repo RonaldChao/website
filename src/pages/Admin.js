@@ -4,7 +4,7 @@ import classNames from 'classnames'
 // import Selector from './shared/Selector'
 
 import style from './Admin.css'
-// import Selector from 'react-select';
+
 import EditableDiv from '../components/shared/EditableDiv';
 import Loading from '../components/shared/Loading';
 import {arrayToString, coorStrToArray} from '../utils/string.js'
@@ -39,11 +39,20 @@ class Admin extends React.Component {
     const turnOnLoading = () => this.setState({isLoading: true})
     const turnOffLoading = () => this.setState({isLoading: false})
 
-    const onUpdate = id => _v => {
-      const geo = coorStrToArray(_v)
+    const updateField = (id, field, value) => {
+      const payload = {}
+      payload[field] = value
       turnOnLoading()
-      updateCinByIdApi(id, {geo})
+      updateCinByIdApi(id, payload)
         .then((result) => turnOffLoading())
+    }
+
+    const onUpdateGeo = id => _v => {
+      updateField(id, 'geo', coorStrToArray(_v))
+    }
+
+    const onUpdateHOF = (id, field) => _v => {
+      updateField(id, field, _v)
     }
 
     return (
@@ -56,16 +65,17 @@ class Admin extends React.Component {
             {
               cinList.map((ele, i) => {
                 return <div className={rowCSS} key={ele.id}>
-                  <div className={cellCSS}>{ele.name}</div>
-                  <div className={cellCSS}>{ele.alias}</div>
+                  <EditableDiv value={ele.name} onUpdate={onUpdateHOF(ele.id, 'name')}/>
                   <div className={cellCSS}>{ele.location}</div>
-                  <EditableDiv value={ele.geo} onUpdate={onUpdate(ele.id)}/>
+                  <div className={cellCSS}>{ele.tags}</div>
+                  <EditableDiv value={ele.geo} onUpdate={onUpdateGeo(ele.id)}/>
+                  <EditableDiv value={ele.address} onUpdate={onUpdateHOF(ele.id, 'address')}/>
                 </div>
               })
             }
           </div>
-
         </div>
+
       </div>
     )
   }

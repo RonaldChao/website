@@ -1,12 +1,9 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import style from './Selector.css'
 
 class Selector extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-
   render () {
     const { options, updateCin } = this.props
     const selectCSS = classNames(style['selectStyle'])
@@ -14,12 +11,12 @@ class Selector extends React.Component {
     const onChange = (e) => updateCin(e.target.value)
 
     return (<div>
-              <select onChange={onChange} className={selectCSS}>
-                {options.map( 
-                    (op, i) => <option value={op.value} key={i}>{op.title}</option>
-                )}
-              </select>
-            </div>)
+      <select onChange={onChange} className={selectCSS}>
+        {options.map(
+          (op, i) => <option value={op.value} key={i}>{op.title}</option>
+        )}
+      </select>
+    </div>)
   }
 }
 
