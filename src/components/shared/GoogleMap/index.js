@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const apiKey = 'AIzaSyAJIoOD-LKtucYaDuyalOjvwb4sdaYAP_k'
 
 class SimpleMap extends Component {
   static defaultProps = {
@@ -12,6 +13,7 @@ class SimpleMap extends Component {
   render() {
     return (
       <GoogleMapReact
+        bootstrapURLKeys={{key: apiKey}}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
       >

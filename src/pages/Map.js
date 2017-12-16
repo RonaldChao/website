@@ -13,10 +13,11 @@ class Map extends React.Component {
   }
 
   render () {
+    const containCSS = classNames(style['containerStyle'])
     return (
-      <div>
-          <GoogleMap />
-      </div>
+        <div className={containCSS}>
+            <GoogleMap />
+        </div>
     )
   }
 }
