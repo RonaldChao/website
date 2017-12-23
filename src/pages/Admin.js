@@ -66,8 +66,8 @@ class Admin extends React.Component {
               cinList.map((ele, i) => {
                 return <div className={rowCSS} key={ele.id}>
                   <EditableDiv value={ele.name} onUpdate={onUpdateHOF(ele.id, 'name')}/>
-                  <EditableDiv value={ele.alias} onUpdate={onUpdateHOF(ele.id, 'alias')}/>
                   <div className={cellCSS}>{ele.location}</div>
+                  <div className={cellCSS}>{ele.tags}</div>
                   <EditableDiv value={ele.geo} onUpdate={onUpdateGeo(ele.id)}/>
                   <EditableDiv value={ele.address} onUpdate={onUpdateHOF(ele.id, 'address')}/>
                 </div>

@@ -10,13 +10,22 @@ import GoogleMap from '../components/shared/GoogleMap';
 class Map extends React.Component {
   constructor (props) {
     super(props)
+    const {cinList} = props
+    this.state = {
+      cinList,
+      isLoading: false
+    }
   }
 
   render () {
+    const {cinList, isLoading} = this.state
+
     const containCSS = classNames(style['containerStyle'])
     return (
         <div className={containCSS}>
-            <GoogleMap />
+            <GoogleMap 
+              cinList = {cinList}
+            />
         </div>
     )
   }

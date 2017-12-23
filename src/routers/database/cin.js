@@ -7,12 +7,12 @@ const Abstract = require('./abstract')
 //* _*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
 var cinObject = new Schema({
   name: { type: String, required: true },
-  yId: { type: String, required: true },
   id: { type: String, required: true },
-  alias: { type: String, required: true },
   location: { type: String, required: true },
   address: { type: String, default: ''},  
-  geo: { type: Array, default: [-1,-1] },  
+  geo: { type: Array, default: [-1,-1] },
+  tags: { type: Array, default: [] },
+  tel: { type: String, default: ''}, 
   createdAt: { type: Date, default: Date.now },
 })
 
